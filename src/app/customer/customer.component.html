@@ -1,0 +1,72 @@
+<div fxLayout="row">
+  <h3>Customer Details</h3>
+</div>
+<div fxlayout="row" fxLayoutGap="10px">
+  <mat-form-field fxFlex="30">
+    <input matInput [(ngModel)]="customer.FirstName" placeholder="First Name">
+  </mat-form-field>
+  <mat-form-field fxFlex="30">
+    <input matInput placeholder="Middle Name" [(ngModel)]="customer.MiddleName">
+  </mat-form-field>
+  <mat-form-field fxFlex="30">
+    <input matInput placeholder="Last Name" [(ngModel)]="customer.LastName">
+  </mat-form-field>
+</div>
+<div fxLayoutGap="10px">
+  <label >Gender:</label>
+  <mat-radio-group fxLayoutGap="10px" [(ngModel)]="customer.Gender">
+    <mat-radio-button value="M">Male</mat-radio-button>
+    <mat-radio-button value="F">Female</mat-radio-button>
+  </mat-radio-group>
+</div>
+<div fxLayout="row" >
+  <mat-form-field fxFlex="40">
+    <input matInput placeholder="Country" [matAutocomplete]="autoCountry" [(ngModel)]="customer.Country">
+  
+  <mat-autocomplete #autoCountry="matAutocomplete">
+    <mat-option *ngFor="let country of countries" [value]="country.value">
+      {{country.value}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+<div fxFlex="30">
+  <mat-slider min="1" max="5" step="1" [(ngModel)]="customer.Rating"></mat-slider>
+</div>
+</div>
+
+<!-- Country: AutoComplete -->
+
+<!-- Customer Rating:Slider -->
+<div fxLayout="row">
+<div fxFlex="40">
+  <mat-slide-toggle [(ngModel)]="customer.ActiveStatsu">Still Active</mat-slide-toggle>
+</div>
+<!-- Active customer:toogle slider -->
+
+<mat-form-field fxFlex="30">
+  <input placeholder="Date of Birth" [(ngModel)]="customer.DateOfBirth" matInput [matDatepicker]="DateOfBirth">
+  <mat-datepicker-toggle matSuffix [for]="DateOfBirth"></mat-datepicker-toggle>
+  <mat-datepicker #DateOfBirth></mat-datepicker>
+</mat-form-field>
+</div>
+<!-- Date of birth: Datepicker -->
+<!-- Occupation :Dropdown -->
+<div fxLayout="row">
+  <mat-form-field fxFlex="40">
+    <mat-select placeholder="Select Occupation" [(ngModel)]="customer.Occupation">
+      <mat-option *ngFor="let occupation of Occupations" [value]="occupation.key">
+        {{occupation.value}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div>
+  <mat-checkbox [(ngModel)]="customer.Terms">
+    I agree, I gave all the correct information.
+  </mat-checkbox>
+</div>
+<!-- Agree Terms & conditions : checkbox -->
+
+<div fxLayout="row">
+  <button mat-raised-button color="primary" (click)="save();" >Save</button>
+</div>
