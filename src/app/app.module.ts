@@ -8,20 +8,29 @@ import { AppComponent } from './app.component';
 import { CustomerComponent } from './customer/customer.component';
 import { MaterialModule } from './material.module';
 import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
+import { DynamicFormComponentComponent } from './dynamic-form-component/dynamic-form-component.component';
+import { DynamicFormQuestionComponentComponent } from './dynamic-form-question-component/dynamic-form-question-component.component';
+import {QuestionControlService} from './Services/question-control.service';
+import {QuestionService} from './Services/question.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerComponent
+    CustomerComponent,
+    DynamicFormComponentComponent,
+    DynamicFormQuestionComponentComponent
+    
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [QuestionControlService,QuestionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
